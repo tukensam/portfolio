@@ -1,0 +1,413 @@
+root {
+  --open-height: '250px';
+}
+
+.App {
+  --bkg-color: #f9f9f9;
+  --bkg-gradient: repeating-linear-gradient(#ffd272b7, #b8df88bf, #96ebe0ba);
+  --border-color: #222;
+  --shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+  --text-color: #222;
+  --tile-1-color: #b8df88;
+  --tile-2-color: #9deed4;
+  --tile-3-color: #9deed4;
+  --tile-4-color: #ffd372;
+  --tile-5-color: #9deed4;
+  --tile-6-color: #ffd372;
+  --glow: none;
+}
+
+.App.dark-theme {
+  --bkg-color: #222;
+  --bkg-gradient: repeating-linear-gradient(#333, #222, #111);
+  --border-color: #eee;
+  --shadow: none;
+  --text-color: #eee;
+  --highlight-color: #2f2f2f;
+  --tile-1-color: var(--highlight-color);
+  --tile-2-color: var(--highlight-color);
+  --tile-3-color: var(--highlight-color);
+  --tile-4-color: var(--highlight-color);
+  --tile-5-color: var(--highlight-color);
+  --tile-6-color: var(--highlight-color);
+  /* --glow: drop-shadow(0 0 0.75rem #c3feb7); */
+  --glow: drop-shadow(0 0 0.75rem #c3feb7b4) drop-shadow(0 0 0.25rem #e6ffe1);
+}
+
+.App {
+  text-align: center;
+  /* background-color: #c7b299; */
+  background-size: cover;
+  background-image: var(--bkg-gradient);
+  padding: 20vh 10vw 1vw 10vw;
+  overscroll-behavior: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.body {
+  color: var(--text-color);
+  background-color: var(--bkg-color);
+  border: 4px var(--border-color) solid;
+  border-bottom: 0px;
+  scroll-margin-top: 20vh;
+  /* filter: drop-shadow(0 5px 0.1rem #b6a188); */
+  box-shadow: var(--shadow);
+  word-break: break-word;
+}
+
+footer {
+  color: var(--text-color);
+  padding-top: 3vh;
+}
+
+.doodle {
+  width: 25vw;
+  filter: var(--glow);
+}
+
+.doodle-2 {
+  margin: auto;
+  width: 200px;
+  filter: var(--glow);
+}
+
+.doodle-container {
+  display: flex;
+  height: 100%;
+  align-content: center;
+}
+
+.social-container {
+  margin: auto;
+  width: max(20vw, 200px);
+  display: flex;
+  justify-content: space-around;
+}
+
+.social {
+  margin-bottom: 1vw;
+  width: max(6vw, 75px);
+}
+
+.social:hover {
+  opacity: .8;
+}
+
+.graphic, .image {
+  margin: 1rem;
+  max-width: 65vw;
+}
+
+.image {
+  width: 40vw;
+}
+
+.App.dark-theme .image {
+  filter: brightness(.8) contrast(1.2);
+}
+
+.App.dark-theme .graphic {
+  filter: brightness(.8) contrast(1.2) invert(1);
+}
+
+/* states/classes for the tiles */
+
+/* no using these classes for some reason?? */
+
+.closed {
+  height: 250px;
+  opacity: 1;
+  transition: opacity 0.35s ease 0.15s, height 0.35s ease;
+}
+
+.expanded {
+  height: 250px;
+  opacity: 1;
+  transition: opacity 0.35s ease 0.15s, height 0.35s ease;
+}
+
+.open {
+  height: var(--open-height);
+  transition: height 0.35s ease;
+}
+
+@media only screen and (min-width: 768px) {
+  .closed {
+    height: 250px;
+    opacity: 1;
+    /* transition: all 0.35s ease; */
+    transition: width 0.35s ease, opacity 0.35s ease 0.15s, height 0s ease 0.1s;
+  }
+  
+  .opening {
+    height: 250px;
+    transition: width 0.35s ease;
+  }
+  
+  .opening-hidden {
+    height: 0;
+  }
+  
+  .opening-hidden-fade {
+    height: 250px;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  
+  .open {
+    /* height: 500px; */
+    height: var(--open-height);
+    transition: height 0.35s ease;
+  }
+  
+  .closing {
+    height: 250px;
+    transition: height 0.35s ease;
+  }
+  
+  .closing-hidden {
+    height: 0;
+    opacity: 0;
+    transition: all 0.35s ease;
+  }
+  
+  .expanded {
+    height: 250px;
+    transition: width 0.35s ease, height 0.35s ease;
+  }
+
+  .doodle {
+    width: auto;
+    filter: var(--glow);
+  }
+}
+
+
+
+/* */
+
+.visible {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.tile-1.ready:hover {
+  background-color: var(--tile-1-color);
+  cursor: pointer;
+}
+
+.tile-2.ready:hover {
+  background-color: var(--tile-2-color);
+  cursor: pointer;
+}
+
+.tile-3.ready:hover {
+  background-color: var(--tile-3-color);
+  cursor: pointer;
+}
+
+.tile-4.ready:hover {
+  background-color: var(--tile-4-color);
+  cursor: pointer;
+}
+
+.tile-5.ready:hover {
+  background-color: var(--tile-5-color);
+  cursor: pointer;
+}
+
+.tile-6.ready:hover {
+  background-color: var(--tile-6-color);
+  cursor: pointer;
+}
+
+.logo {
+  object-fit: contain;
+  width: 100%;
+  height: 325px;
+}
+
+.thumbnail {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  border-width: 2px;
+}
+
+.thumbnail-2-wrapper {
+  text-align: left;
+}
+
+.thumbnail-2 {
+  object-fit: contain;
+  width: auto;
+  height: 200px;
+}
+
+.tile-preview-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-end;
+}
+
+.tile-preview-title {
+  font-size: 3rem;
+}
+
+.tile-preview-description {
+  font-size: 1rem;
+}
+
+.header-col {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-end;
+}
+
+.tile-col {
+  background-color: var(--bkg-color);
+  margin-bottom: 4px;
+  outline: 4px solid;
+  user-select: none;
+  /* overflow: hidden;
+  text-overflow: ""; */
+}
+
+.header-body {
+  padding: max(2vw, 12px);;
+}
+
+.header-body-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.header-body-text-2 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.greeting {
+  font-size: 5rem;
+}
+
+.subheader {
+  font-size: 3rem;
+}
+
+.custom-nav-bar {
+  color: var(--text-color);
+  background-color: var(--bkg-color);
+  border-bottom: solid var(--border-color);
+  border-width: 4px;
+  box-shadow: var(--shadow);
+}
+
+.custom-navbar-brand {
+  display: inline;
+  color: var(--text-color);
+}
+
+.double-images {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.double-images > img {
+  max-width: 40vw;
+  margin: 10px;
+  filter: drop-shadow(0 5px 0.1rem #e8e8e8);
+}
+
+.lightbulb-container {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.brand-logo {
+  margin-right: 10px;
+  filter: var(--glow);
+}
+
+.light-mode-icon {
+  margin-left: 10px;
+}
+
+.social-logo {
+  object-fit: cover;
+  width: 75px;
+  height: 75px;
+}
+
+.social-wrapper-1 {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black;
+  border-width: 2px;
+}
+
+.social-wrapper-1:hover {
+  background-color: #abc4ed;
+}
+
+.resume:hover {
+  background-color: #ea875d;
+}
+
+.social-wrapper-2 {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: solid black;
+  border-width: 2px;
+}
+
+.social-wrapper-2:hover {
+  background-color: #c186ed;
+}
+
+.social-col {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+/* defo being used */
+.content-subheading {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.content-text {
+  font-size: 1.25rem;
+  text-align: left;
+}
