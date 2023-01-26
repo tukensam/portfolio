@@ -133,6 +133,7 @@ function TwoTileRow(props) {
       // setIsTransitioning(false)
       if (window.innerWidth < 768) {
         setIsTransitioning(false)
+        setOpenTile('')
       }
     } else if (classes.contains('opening-hidden')) {
       break breakme;
@@ -349,9 +350,9 @@ function TwoTileRow(props) {
         break;
       case 'open':
         setIsTransitioning(true) 
+        setWidth1(start_width1)
         setClass1('closed')
         setVis1('hidden')
-        setWidth1(start_width1)
         setClass2('closed')
         setVis2('hidden')
         // second tile
